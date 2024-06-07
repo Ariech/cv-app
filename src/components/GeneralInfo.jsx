@@ -1,20 +1,5 @@
-import { useState } from "react";
-
-function GeneralInfo() {
-  const [info, setInfo] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-
-    setInfo((prevInfo) => ({
-      ...prevInfo,
-      [name]: value,
-    }));
-  };
+function GeneralInfo({ state, onInputChange }) {
+  const { name, email, phone } = state;
 
   return (
     <>
@@ -24,10 +9,8 @@ function GeneralInfo() {
           <input
             type="text"
             name="name"
-            value={info.name}
-            onChange={(e) => {
-              handleChange(e);
-            }}
+            value={name}
+            onChange={onInputChange}
           />
         </label>
 
@@ -36,10 +19,8 @@ function GeneralInfo() {
           <input
             type="email"
             name="email"
-            value={info.email}
-            onChange={(e) => {
-              handleChange(e);
-            }}
+            value={email}
+            onChange={onInputChange}
           />
         </label>
 
@@ -48,8 +29,8 @@ function GeneralInfo() {
           <input
             type="tel"
             name="phone"
-            value={info.phone}
-            onChange={(e) => handleChange(e)}
+            value={phone}
+            onChange={onInputChange}
           />
         </label>
       </form>
