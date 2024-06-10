@@ -47,6 +47,24 @@ function App() {
     );
   };
 
+  const handleAddEducation = () => {
+    const newEducation = {
+      id: generateId(),
+      school: "",
+      degree: "",
+      fromDate: "",
+      toDate: "",
+    };
+
+    setEducationInfo([...educationInfo, newEducation]);
+  };
+
+  const handleRemoveEducation = (id) => {
+    setEducationInfo((prevEducationInfo) =>
+      prevEducationInfo.filter((item) => item.id !== id)
+    );
+  };
+
   return (
     <>
       <GeneralInfo
@@ -54,15 +72,23 @@ function App() {
         onInputChange={(e) => handleSingleInputChange(e, setGeneralInfo)}
       />
 
-      {educationInfo.map((info) => (
-        <EducationInfo
-          key={info.id}
-          state={info}
-          onInputChange={(e) =>
-            handleArrayInputChange(e, setEducationInfo, info.id)
-          }
-        />
-      ))}
+      <div>
+        {educationInfo.map((info) => (
+          <div key={info.id}>
+            <EducationInfo
+              state={info}
+              onInputChange={(e) =>
+                handleArrayInputChange(e, setEducationInfo, info.id)
+              }
+            />
+            <button onClick={() => handleRemoveEducation(info.id)}>
+              Remove Education
+            </button>
+          </div>
+        ))}
+
+        <button onClick={handleAddEducation}>Add Education</button>
+      </div>
 
       <WorkExperience />
     </>
