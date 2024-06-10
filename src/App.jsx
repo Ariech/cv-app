@@ -8,6 +8,21 @@ function App() {
     return new Date().getTime().toString();
   };
 
+  const educationInfoTemplate = {
+    school: "",
+    degree: "",
+    fromDate: "",
+    toDate: "",
+  };
+
+  const workExperienceTemplate = {
+    company: "",
+    position: "",
+    responsibilites: "",
+    fromDate: "",
+    toDate: "",
+  };
+
   const [generalInfo, setGeneralInfo] = useState({
     name: "",
     email: "",
@@ -19,6 +34,16 @@ function App() {
       id: generateId(),
       school: "",
       degree: "",
+      fromDate: "",
+      toDate: "",
+    },
+  ]);
+
+  const [workExperience, setWorkExperience] = useState([
+    {
+      company: "",
+      position: "",
+      responsibilites: "",
       fromDate: "",
       toDate: "",
     },
@@ -47,22 +72,12 @@ function App() {
     );
   };
 
-  const handleAddEducation = () => {
-    const newEducation = {
-      id: generateId(),
-      school: "",
-      degree: "",
-      fromDate: "",
-      toDate: "",
-    };
-
-    setEducationInfo([...educationInfo, newEducation]);
+  const handleAddInfo = (newInfo, setter) => {
+    setter((prevInfo) => [...prevInfo, { id: generateId(), ...newInfo }]);
   };
 
-  const handleRemoveEducation = (id) => {
-    setEducationInfo((prevEducationInfo) =>
-      prevEducationInfo.filter((item) => item.id !== id)
-    );
+  const handleRemoveInfo = (id, setter) => {
+    setter((prevInfo) => prevInfo.filter((item) => item.id !== id));
   };
 
   return (
@@ -81,13 +96,17 @@ function App() {
                 handleArrayInputChange(e, setEducationInfo, info.id)
               }
             />
-            <button onClick={() => handleRemoveEducation(info.id)}>
+            <button onClick={() => handleRemoveInfo(info.id, setEducationInfo)}>
               Remove Education
             </button>
           </div>
         ))}
 
-        <button onClick={handleAddEducation}>Add Education</button>
+        <button
+          onClick={() => handleAddInfo(educationInfoTemplate, setEducationInfo)}
+        >
+          Add Education
+        </button>
       </div>
 
       <WorkExperience />
