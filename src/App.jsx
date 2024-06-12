@@ -41,6 +41,7 @@ function App() {
 
   const [workExperience, setWorkExperience] = useState([
     {
+      id: generateId(),
       company: "",
       position: "",
       responsibilites: "",
@@ -88,7 +89,7 @@ function App() {
       />
 
       <div>
-        {educationInfo.map((info) => (
+        {educationInfo.map((info, index) => (
           <div key={info.id}>
             <EducationInfo
               state={info}
@@ -96,9 +97,13 @@ function App() {
                 handleArrayInputChange(e, setEducationInfo, info.id)
               }
             />
-            <button onClick={() => handleRemoveInfo(info.id, setEducationInfo)}>
-              Remove Education
-            </button>
+            {index > 0 && (
+              <button
+                onClick={() => handleRemoveInfo(info.id, setEducationInfo)}
+              >
+                Remove Education
+              </button>
+            )}
           </div>
         ))}
 
@@ -109,7 +114,33 @@ function App() {
         </button>
       </div>
 
-      <WorkExperience />
+      <div>
+        {workExperience.map((info, index) => (
+          <div key={info.id}>
+            <WorkExperience
+              state={info}
+              onInputChange={(e) =>
+                handleArrayInputChange(e, setWorkExperience, info.id)
+              }
+            />
+            {index > 0 && (
+              <button
+                onClick={() => handleRemoveInfo(info.id, setWorkExperience)}
+              >
+                Remove Work Experience
+              </button>
+            )}
+          </div>
+        ))}
+
+        <button
+          onClick={() =>
+            handleAddInfo(workExperienceTemplate, setWorkExperience)
+          }
+        >
+          Add Work Experience
+        </button>
+      </div>
     </>
   );
 }
