@@ -13,6 +13,7 @@ function App() {
     degree: "",
     fromDate: "",
     toDate: "",
+    isEdit: true,
   };
 
   const workExperienceTemplate = {
@@ -21,32 +22,27 @@ function App() {
     responsibilites: "",
     fromDate: "",
     toDate: "",
+    isEdit: true,
   };
 
   const [generalInfo, setGeneralInfo] = useState({
     name: "",
     email: "",
     phone: "",
+    isEdit: true,
   });
 
   const [educationInfo, setEducationInfo] = useState([
     {
       id: generateId(),
-      school: "",
-      degree: "",
-      fromDate: "",
-      toDate: "",
+      ...educationInfoTemplate,
     },
   ]);
 
   const [workExperience, setWorkExperience] = useState([
     {
       id: generateId(),
-      company: "",
-      position: "",
-      responsibilites: "",
-      fromDate: "",
-      toDate: "",
+      ...workExperienceTemplate,
     },
   ]);
 
@@ -55,7 +51,7 @@ function App() {
 
     setState((prevInfo) => ({
       ...prevInfo,
-      [name]: value,
+      [name]: name === "isEdit" ? !prevInfo.isEdit : value,
     }));
   };
 
@@ -65,7 +61,10 @@ function App() {
     setState((prevInfo) =>
       prevInfo.map((info) => {
         if (info.id === id) {
-          return { ...info, [name]: value };
+          return {
+            ...info,
+            [name]: name === "isEdit" ? !info.isEdit : value,
+          };
         }
 
         return info;
@@ -81,11 +80,29 @@ function App() {
     setter((prevInfo) => prevInfo.filter((item) => item.id !== id));
   };
 
+  const handleSubmit = (state, setState) => {
+    console.log("Submitting state:", state);
+
+    setState((prevState) => {
+      if (Array.isArray(prevState)) {
+        return prevState.map((info) =>
+          info.id === state.id ? { ...state, isEdit: !state.isEdit } : info
+        );
+      }
+
+      return {
+        ...prevState,
+        isEdit: !prevState.isEdit,
+      };
+    });
+  };
+
   return (
     <>
       <GeneralInfo
         state={generalInfo}
         onInputChange={(e) => handleSingleInputChange(e, setGeneralInfo)}
+        onSubmit={() => handleSubmit(generalInfo, setGeneralInfo)}
       />
 
       <div>
@@ -96,14 +113,10 @@ function App() {
               onInputChange={(e) =>
                 handleArrayInputChange(e, setEducationInfo, info.id)
               }
+              index={index}
+              onRemove={() => handleRemoveInfo(info.id, setEducationInfo)}
+              onSubmit={() => handleSubmit(info, setEducationInfo)}
             />
-            {index > 0 && (
-              <button
-                onClick={() => handleRemoveInfo(info.id, setEducationInfo)}
-              >
-                Remove Education
-              </button>
-            )}
           </div>
         ))}
 
@@ -122,14 +135,10 @@ function App() {
               onInputChange={(e) =>
                 handleArrayInputChange(e, setWorkExperience, info.id)
               }
+              index={index}
+              onRemove={() => handleRemoveInfo(info.id, setWorkExperience)}
+              onSubmit={() => handleSubmit(info, setWorkExperience)}
             />
-            {index > 0 && (
-              <button
-                onClick={() => handleRemoveInfo(info.id, setWorkExperience)}
-              >
-                Remove Work Experience
-              </button>
-            )}
           </div>
         ))}
 
