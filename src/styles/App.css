@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  padding: 32px 24px;
+  gap: 24px;
+  max-width: 1280px;
+}
+
+.preview-container {
+  display: flex;
+  flex: 1.5;
+  background-color: red;
+}
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 24px;
+}

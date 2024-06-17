@@ -1,10 +1,12 @@
+import "../styles/Form.css";
+
 function GeneralInfo({ state, onInputChange, onSubmit }) {
   const { name, email, phone, isEdit } = state;
 
   return (
     <>
       {isEdit ? (
-        <form>
+        <form className="form">
           <label>
             Name:
             <input
@@ -39,14 +41,14 @@ function GeneralInfo({ state, onInputChange, onSubmit }) {
           </button>
         </form>
       ) : (
-        <>
+        <div>
           <p>Name: {name}</p>
           <p>Email: {email}</p>
           <p>Phone Number: {phone}</p>
           <button type="button" name="isEdit" onClick={onInputChange}>
             Edit Content
           </button>
-        </>
+        </div>
       )}
     </>
   );

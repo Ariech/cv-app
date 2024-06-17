@@ -2,6 +2,8 @@ import { useState } from "react";
 import EducationInfo from "./components/EducationInfo";
 import GeneralInfo from "./components/GeneralInfo";
 import WorkExperience from "./components/WorkExperience";
+import ResumePreview from "./components/ResumePreview";
+import "./styles/App.css";
 
 function App() {
   const generateId = () => {
@@ -98,59 +100,70 @@ function App() {
   };
 
   return (
-    <>
-      <GeneralInfo
-        state={generalInfo}
-        onInputChange={(e) => handleSingleInputChange(e, setGeneralInfo)}
-        onSubmit={() => handleSubmit(generalInfo, setGeneralInfo)}
-      />
+    <div className="app">
+      <div className="edit-container">
+        <GeneralInfo
+          state={generalInfo}
+          onInputChange={(e) => handleSingleInputChange(e, setGeneralInfo)}
+          onSubmit={() => handleSubmit(generalInfo, setGeneralInfo)}
+        />
 
-      <div>
-        {educationInfo.map((info, index) => (
-          <div key={info.id}>
-            <EducationInfo
-              state={info}
-              onInputChange={(e) =>
-                handleArrayInputChange(e, setEducationInfo, info.id)
-              }
-              index={index}
-              onRemove={() => handleRemoveInfo(info.id, setEducationInfo)}
-              onSubmit={() => handleSubmit(info, setEducationInfo)}
-            />
-          </div>
-        ))}
+        <div>
+          {educationInfo.map((info, index) => (
+            <div key={info.id}>
+              <EducationInfo
+                state={info}
+                onInputChange={(e) =>
+                  handleArrayInputChange(e, setEducationInfo, info.id)
+                }
+                index={index}
+                onRemove={() => handleRemoveInfo(info.id, setEducationInfo)}
+                onSubmit={() => handleSubmit(info, setEducationInfo)}
+              />
+            </div>
+          ))}
 
-        <button
-          onClick={() => handleAddInfo(educationInfoTemplate, setEducationInfo)}
-        >
-          Add Education
-        </button>
+          <button
+            onClick={() =>
+              handleAddInfo(educationInfoTemplate, setEducationInfo)
+            }
+          >
+            Add Education
+          </button>
+        </div>
+
+        <div>
+          {workExperience.map((info, index) => (
+            <div key={info.id}>
+              <WorkExperience
+                state={info}
+                onInputChange={(e) =>
+                  handleArrayInputChange(e, setWorkExperience, info.id)
+                }
+                index={index}
+                onRemove={() => handleRemoveInfo(info.id, setWorkExperience)}
+                onSubmit={() => handleSubmit(info, setWorkExperience)}
+              />
+            </div>
+          ))}
+
+          <button
+            onClick={() =>
+              handleAddInfo(workExperienceTemplate, setWorkExperience)
+            }
+          >
+            Add Work Experience
+          </button>
+        </div>
       </div>
-
-      <div>
-        {workExperience.map((info, index) => (
-          <div key={info.id}>
-            <WorkExperience
-              state={info}
-              onInputChange={(e) =>
-                handleArrayInputChange(e, setWorkExperience, info.id)
-              }
-              index={index}
-              onRemove={() => handleRemoveInfo(info.id, setWorkExperience)}
-              onSubmit={() => handleSubmit(info, setWorkExperience)}
-            />
-          </div>
-        ))}
-
-        <button
-          onClick={() =>
-            handleAddInfo(workExperienceTemplate, setWorkExperience)
-          }
-        >
-          Add Work Experience
-        </button>
+      <div className="preview-container">
+        <ResumePreview
+          generalInfo={generalInfo}
+          educationInfo={educationInfo}
+          workExperience={workExperience}
+        />
       </div>
-    </>
+    </div>
   );
 }
 

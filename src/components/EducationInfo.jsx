@@ -1,10 +1,12 @@
+import "../styles/Form.css";
+
 function EducationInfo({ state, onInputChange, index, onRemove, onSubmit }) {
   const { school, degree, fromDate, toDate, isEdit } = state;
 
   return (
     <>
       {isEdit ? (
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form className="form">
           <label>
             School name:
             <input
@@ -56,7 +58,7 @@ function EducationInfo({ state, onInputChange, index, onRemove, onSubmit }) {
           </button>
         </form>
       ) : (
-        <>
+        <div>
           <p>School name: {school}</p>
           <p>Degree: {degree}</p>
           <p>From: {fromDate}</p>
@@ -69,7 +71,7 @@ function EducationInfo({ state, onInputChange, index, onRemove, onSubmit }) {
           <button type="button" name="isEdit" onClick={onInputChange}>
             Edit Content
           </button>
-        </>
+        </div>
       )}
     </>
   );

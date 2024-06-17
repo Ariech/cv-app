@@ -1,3 +1,5 @@
+import "../styles/Form.css";
+
 function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
   const { company, position, responsibilites, fromDate, toDate, isEdit } =
     state;
@@ -5,7 +7,7 @@ function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
   return (
     <>
       {isEdit ? (
-        <form>
+        <form className="form">
           <label>
             Company name:
             <input
@@ -65,7 +67,7 @@ function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
           </button>
         </form>
       ) : (
-        <>
+        <div>
           <p>Company: {company}</p>
           <p>Position: {position}</p>
           <p>Responsibilities: {responsibilites}</p>
@@ -79,7 +81,7 @@ function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
           <button type="button" name="isEdit" onClick={onInputChange}>
             Edit Content
           </button>
-        </>
+        </div>
       )}
     </>
   );
