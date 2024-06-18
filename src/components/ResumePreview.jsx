@@ -11,6 +11,7 @@ function ResumePreview({ generalInfo, educationInfo, workExperience }) {
       </div>
 
       <div>
+        <h3>Education</h3>
         {educationInfo.map(({ id, school, degree, fromDate, toDate }) => (
           <div key={id}>
             <p>{school}</p>
@@ -21,6 +22,7 @@ function ResumePreview({ generalInfo, educationInfo, workExperience }) {
         ))}
       </div>
       <div>
+        <h3>Professional Experience</h3>
         {workExperience.map(
           ({ id, company, position, responsibilites, fromDate, toDate }) => (
             <div key={id}>

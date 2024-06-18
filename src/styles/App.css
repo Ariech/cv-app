@@ -2,26 +2,88 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  --main-bg-color: #f3f4f6;
+}
+
+body {
+  background-color: var(--main-bg-color);
 }
 
 .app {
   display: flex;
   margin: auto;
   width: 100%;
-  padding: 32px 24px;
-  gap: 24px;
+  padding: 2em 1em;
+  gap: 1em;
   max-width: 1280px;
 }
 
 .preview-container {
   display: flex;
+  flex-direction: column;
+  gap: 1em;
   flex: 1.5;
   background-color: red;
+  height: 29.7cm;
+  width: 21cm;
 }
 
 .edit-container {
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 24px;
+  gap: 1em;
+  background: #fff;
+  height: fit-content;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+input {
+  background-color: var(--main-bg-color);
+  border: 2px solid transparent;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75em;
+  gap: 0.25em;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+button {
+  border: none;
+  border-radius: 0.25em;
+  padding: 0.75em 1em;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.button-remove {
+  background-color: red;
+}
+
+.button-submit {
+  background-color: #187ff5;
+}
+
+.button-add {
+  background-color: rgb(144, 204, 54);
 }

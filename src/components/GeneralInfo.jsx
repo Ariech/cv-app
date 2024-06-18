@@ -5,49 +5,68 @@ function GeneralInfo({ state, onInputChange, onSubmit }) {
 
   return (
     <>
+      <h2>Personal Details</h2>
       {isEdit ? (
         <form className="form">
-          <label>
-            Name:
+          <div className="form-group">
+            <label htmlFor="name">Name:</label>
             <input
               type="text"
+              id="name"
               name="name"
               value={name}
               onChange={onInputChange}
             />
-          </label>
+          </div>
 
-          <label>
-            Email:
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
             <input
               type="email"
+              id="email"
               name="email"
               value={email}
               onChange={onInputChange}
             />
-          </label>
+          </div>
 
-          <label>
-            Phone Number:
+          <div className="form-group">
+            <label htmlFor="phone">Phone Number:</label>
             <input
               type="tel"
+              id="phone"
               name="phone"
               value={phone}
               onChange={onInputChange}
             />
-          </label>
-          <button type="button" name="isEdit" onClick={onSubmit}>
-            Submit Content
-          </button>
+          </div>
+
+          <div className="buttons">
+            <button
+              className="button-submit"
+              type="button"
+              name="isEdit"
+              onClick={onSubmit}
+            >
+              Submit Content
+            </button>
+          </div>
         </form>
       ) : (
         <div>
           <p>Name: {name}</p>
           <p>Email: {email}</p>
           <p>Phone Number: {phone}</p>
-          <button type="button" name="isEdit" onClick={onInputChange}>
-            Edit Content
-          </button>
+          <div className="buttons">
+            <button
+              className="button-submit"
+              type="button"
+              name="isEdit"
+              onClick={onInputChange}
+            >
+              Edit Content
+            </button>
+          </div>
         </div>
       )}
     </>

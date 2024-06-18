@@ -108,7 +108,7 @@ function App() {
           onSubmit={() => handleSubmit(generalInfo, setGeneralInfo)}
         />
 
-        <div>
+        <div className="form-container">
           {educationInfo.map((info, index) => (
             <div key={info.id}>
               <EducationInfo
@@ -122,17 +122,20 @@ function App() {
               />
             </div>
           ))}
-
-          <button
-            onClick={() =>
-              handleAddInfo(educationInfoTemplate, setEducationInfo)
-            }
-          >
-            Add Education
-          </button>
+          <div className="buttons">
+            {" "}
+            <button
+              className="button-add"
+              onClick={() =>
+                handleAddInfo(educationInfoTemplate, setEducationInfo)
+              }
+            >
+              Add Education
+            </button>
+          </div>
         </div>
 
-        <div>
+        <div className="form-container">
           {workExperience.map((info, index) => (
             <div key={info.id}>
               <WorkExperience
@@ -147,13 +150,16 @@ function App() {
             </div>
           ))}
 
-          <button
-            onClick={() =>
-              handleAddInfo(workExperienceTemplate, setWorkExperience)
-            }
-          >
-            Add Work Experience
-          </button>
+          <div className="buttons">
+            <button
+              className="button-add"
+              onClick={() =>
+                handleAddInfo(workExperienceTemplate, setWorkExperience)
+              }
+            >
+              Add Work Experience
+            </button>
+          </div>
         </div>
       </div>
       <div className="preview-container">
