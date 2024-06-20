@@ -1,10 +1,8 @@
-import "../styles/Form.css";
-
 function EducationInfo({ state, onInputChange, index, onRemove, onSubmit }) {
   const { id, school, degree, fromDate, toDate, isEdit } = state;
 
   return (
-    <>
+    <div className="form-container">
       <h2>Education Details</h2>
       {isEdit ? (
         <form className="form">
@@ -75,10 +73,18 @@ function EducationInfo({ state, onInputChange, index, onRemove, onSubmit }) {
         </form>
       ) : (
         <div className="edit-preview">
-          <p>School name: {school}</p>
-          <p>Degree: {degree}</p>
-          <p>From: {fromDate}</p>
-          <p>To: {toDate}</p>
+          <p>
+            <span>School name:</span> {school}
+          </p>
+          <p>
+            <span>Degree:</span> {degree}
+          </p>
+          <p>
+            <span>From:</span> {fromDate}
+          </p>
+          <p>
+            <span>To:</span> {toDate}
+          </p>
 
           <div className="buttons">
             {index > 0 && (
@@ -101,7 +107,7 @@ function EducationInfo({ state, onInputChange, index, onRemove, onSubmit }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

@@ -1,5 +1,3 @@
-import "../styles/Form.css";
-
 function GeneralInfo({ state, onInputChange, onSubmit }) {
   const { name, email, phone, isEdit } = state;
 
@@ -53,10 +51,16 @@ function GeneralInfo({ state, onInputChange, onSubmit }) {
           </div>
         </form>
       ) : (
-        <div>
-          <p>Name: {name}</p>
-          <p>Email: {email}</p>
-          <p>Phone Number: {phone}</p>
+        <div className="edit-preview">
+          <p>
+            <span>Name:</span> {name}
+          </p>
+          <p>
+            <span>Email:</span> {email}
+          </p>
+          <p>
+            <span>Phone Number:</span> {phone}
+          </p>
           <div className="buttons">
             <button
               className="button-submit"

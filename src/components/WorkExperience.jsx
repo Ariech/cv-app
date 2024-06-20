@@ -1,11 +1,9 @@
-import "../styles/Form.css";
-
 function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
-  const { id, company, position, responsibilites, fromDate, toDate, isEdit } =
+  const { id, company, position, responsibilities, fromDate, toDate, isEdit } =
     state;
 
   return (
-    <>
+    <div className="form-container">
       <h2>Work Details</h2>
       {isEdit ? (
         <form className="form">
@@ -37,7 +35,7 @@ function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
               type="text"
               id={`responsibilities-${id}`}
               name="responsibilities"
-              value={responsibilites}
+              value={responsibilities}
               onChange={onInputChange}
             />
           </div>
@@ -86,11 +84,21 @@ function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
         </form>
       ) : (
         <div className="edit-preview">
-          <p>Company: {company}</p>
-          <p>Position: {position}</p>
-          <p>Responsibilities: {responsibilites}</p>
-          <p>From: {fromDate}</p>
-          <p>To: {toDate}</p>
+          <p>
+            <span>Company:</span> {company}
+          </p>
+          <p>
+            <span>Position:</span> {position}
+          </p>
+          <p>
+            <span>Responsibilities:</span> {responsibilities}
+          </p>
+          <p>
+            <span>From:</span> {fromDate}
+          </p>
+          <p>
+            <span>To:</span> {toDate}
+          </p>
 
           <div className="buttons">
             {index > 0 && (
@@ -113,7 +121,7 @@ function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

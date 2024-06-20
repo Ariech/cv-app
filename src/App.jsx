@@ -102,13 +102,15 @@ function App() {
   return (
     <div className="app">
       <div className="edit-container">
-        <GeneralInfo
-          state={generalInfo}
-          onInputChange={(e) => handleSingleInputChange(e, setGeneralInfo)}
-          onSubmit={() => handleSubmit(generalInfo, setGeneralInfo)}
-        />
+        <div className="section-container">
+          <GeneralInfo
+            state={generalInfo}
+            onInputChange={(e) => handleSingleInputChange(e, setGeneralInfo)}
+            onSubmit={() => handleSubmit(generalInfo, setGeneralInfo)}
+          />
+        </div>
 
-        <div className="form-container">
+        <div className="section-container">
           {educationInfo.map((info, index) => (
             <div key={info.id}>
               <EducationInfo
@@ -135,7 +137,7 @@ function App() {
           </div>
         </div>
 
-        <div className="form-container">
+        <div className="section-container">
           {workExperience.map((info, index) => (
             <div key={info.id}>
               <WorkExperience
