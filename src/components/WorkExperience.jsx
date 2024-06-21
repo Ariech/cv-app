@@ -31,8 +31,7 @@ function WorkExperience({ state, onInputChange, index, onRemove, onSubmit }) {
 
           <div className="form-group">
             <label htmlFor={`responsibilities-${id}`}>Responsibilities:</label>
-            <input
-              type="text"
+            <textarea
               id={`responsibilities-${id}`}
               name="responsibilities"
               value={responsibilities}

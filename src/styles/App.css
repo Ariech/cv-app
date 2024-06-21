@@ -22,12 +22,18 @@ body {
   max-width: 1280px;
 }
 
+.preview-container,
+.edit-container {
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.1),
+    0 8px 16px -8px rgba(0, 0, 0, 0.25);
+}
+
 .preview-container {
   display: flex;
   flex-direction: column;
   gap: 1em;
   flex: 1.5;
-  background-color: red;
+  background-color: white;
   height: 29.7cm;
   width: 21cm;
 }
@@ -66,11 +72,16 @@ body {
   flex-direction: column;
 }
 
-input {
+input,
+textarea {
   background-color: var(--main-bg-color);
   border: 2px solid transparent;
   border-radius: 1em;
   padding: 0.5em;
+}
+
+textarea {
+  min-height: 4em;
 }
 
 .form-group {
@@ -113,4 +124,55 @@ button {
 
 .button-add {
   background-color: rgb(144, 204, 54);
+}
+
+.personal-info {
+  background-color: #187ff5;
+  color: white;
+  padding: 3em 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.personal-info > h1 {
+  text-align: center;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.resume-section {
+  padding: 0 2.5em;
+}
+
+.resume-section > h3 {
+  text-align: center;
+  padding: 0.2em 0;
+  background-color: #eef1f2;
+}
+
+.resume-container {
+  display: flex;
+  gap: 2em;
+  padding: 1em 0;
+}
+
+.resume-info,
+.resume-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.resume-info--school,
+.resume-info--company {
+  font-weight: bold;
+}
+
+.resume-dates {
+  min-width: 90px;
 }

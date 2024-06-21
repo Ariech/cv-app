@@ -10,27 +10,39 @@ function ResumePreview({ generalInfo, educationInfo, workExperience }) {
         </div>
       </div>
 
-      <div>
+      <div className="resume-section">
         <h3>Education</h3>
         {educationInfo.map(({ id, school, degree, fromDate, toDate }) => (
-          <div key={id}>
-            <p>{school}</p>
-            <p>{degree}</p>
-            <p>{fromDate}</p>
-            <p>{toDate}</p>
+          <div className="resume-container" key={id}>
+            <div className="resume-dates">
+              <p>{fromDate}</p>
+              <p>{toDate}</p>
+            </div>
+            <div className="resume-info">
+              <p>
+                <span className="resume-info--school">{school}</span>
+              </p>
+              <p>{degree}</p>
+            </div>
           </div>
         ))}
       </div>
-      <div>
+      <div className="resume-section">
         <h3>Professional Experience</h3>
         {workExperience.map(
-          ({ id, company, position, responsibilites, fromDate, toDate }) => (
-            <div key={id}>
-              <p>{company}</p>
-              <p>{position}</p>
-              <p>{responsibilites}</p>
-              <p>{fromDate}</p>
-              <p>{toDate}</p>
+          ({ id, company, position, responsibilities, fromDate, toDate }) => (
+            <div className="resume-container" key={id}>
+              <div className="resume-dates">
+                <p>{fromDate}</p>
+                <p>{toDate}</p>
+              </div>
+              <div className="resume-info">
+                <p>
+                  <span className="resume-info--company">{company}</span>
+                </p>
+                <p>{position}</p>
+                <p>{responsibilities}</p>
+              </div>
             </div>
           )
         )}
