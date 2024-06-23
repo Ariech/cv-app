@@ -1,3 +1,5 @@
+[Deployed site](https://master--astounding-crisp-491884.netlify.app/)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
